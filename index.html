@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <title>Миньоны и все все все | Знакомство с героями</title>
+  <!-- Подключаем современный шрифт для весёлого настроения -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Fredoka+One&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: linear-gradient(145deg, #feee7d 0%, #feda4a 100%);
+      font-family: 'Nunito', sans-serif;
+      color: #2d2d2d;
+      line-height: 1.5;
+      padding: 1rem;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 1300px;
+      margin: 0 auto;
+      background: rgba(255, 251, 235, 0.8);
+      backdrop-filter: blur(10px);
+      border-radius: 3.5rem;
+      padding: 2rem 2rem 3rem;
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25), inset 0 2px 10px rgba(255, 255, 200, 0.7);
+      border: 3px solid #0b3e5c;
+    }
+
+    h1 {
+      font-family: 'Fredoka One', cursive;
+      font-size: 3.8rem;
+      text-align: center;
+      color: #0b3e5c;
+      text-shadow: 4px 4px 0 #ffd966, 6px 6px 0 rgba(0,0,0,0.2);
+      margin-bottom: 0.5rem;
+      letter-spacing: 2px;
+      word-break: break-word;
+    }
+
+    .subtitle {
+      text-align: center;
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: #2c5f2d;
+      background: #ffec9e;
+      display: inline-block;
+      padding: 0.5rem 2.5rem;
+      border-radius: 3rem;
+      margin: 0 auto 2.5rem;
+      letter-spacing: 1px;
+      border: 2px dashed #1f4f6e;
+      position: relative;
+      left: 50%;
+      transform: translateX(-50%);
+      white-space: nowrap;
+    }
+
+    .minions-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin: 2rem 0 3rem;
+    }
+
+    .minion-card {
+      background: #fef9e0;
+      border: 4px solid #1e476b;
+      border-radius: 3rem 3rem 2.5rem 2.5rem;
+      padding: 1.8rem 1.2rem 1.5rem;
+      box-shadow: 0 15px 25px rgba(0, 0, 0, 0.3);
+      transition: transform 0.25s ease, box-shadow 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      background: radial-gradient(circle at 20% 20%, #fff7cf, #ffe68f);
+      position: relative;
+    }
+
+    .minion-card:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 30px 40px rgba(0, 0, 0, 0.35);
+    }
+
+    .minion-avatar {
+      width: 160px;
+      height: 160px;
+      background: #fbd23c;
+      border-radius: 50%;
+      border: 6px solid #2d5f7e;
+      margin-top: -3.5rem;
+      margin-bottom: 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(circle at 30% 25%, #ffe484, #f0b300);
+      box-shadow: 0 10px 15px rgba(0,0,0,0.3);
+      overflow: hidden;
+      font-size: 5rem;
+      position: relative;
+    }
+
+    /* Стилизация эмодзи вместо реальных фото (выглядят как миньоны) */
+    .minion-avatar span {
+      font-size: 5.5rem;
+      filter: drop-shadow(0 8px 6px rgba(0,0,0,0.3));
+    }
+
+    .minion-name {
+      font-family: 'Fredoka One', cursive;
+      font-size: 2.3rem;
+      color: #0b3e5c;
+      background: #ffffffc9;
+      padding: 0.2rem 1.8rem;
+      border-radius: 2rem;
+      margin: 0.5rem 0;
+      letter-spacing: 1px;
+      border: 2px solid #2f5f7a;
+      backdrop-filter: blur(5px);
+    }
+
+    .minion-info {
+      background: rgba(255, 255, 250, 0.85);
+      border-radius: 2rem;
+      padding: 1rem 1.2rem;
+      margin: 0.8rem 0;
+      font-weight: 600;
+      font-size: 1rem;
+      color: #1e3b4f;
+      border: 2px solid #f0b34b;
+      width: 100%;
+      backdrop-filter: blur(4px);
+    }
+
+    .traits {
+      font-weight: 700;
+      color: #b45f1a;
+    }
+
+    .funny-stuff {
+      margin-top: 0.5rem;
+      font-style: italic;
+      background: #fff3c9;
+      border-radius: 1.5rem;
+      padding: 0.5rem;
+      color: #3c2e1f;
+    }
+
+    .facts-section {
+      margin-top: 3.5rem;
+      background: #1e476b;
+      border-radius: 3rem;
+      padding: 2.2rem 2rem;
+      color: #fef9e0;
+      background: linear-gradient(135deg, #1a3b50, #0f2c3d);
+      border: 4px solid #ffd966;
+      box-shadow: inset 0 0 25px #ffe4844d, 0 15px 25px black;
+    }
+
+    .facts-section h2 {
+      font-family: 'Fredoka One', cursive;
+      font-size: 2.8rem;
+      color: #ffd966;
+      text-align: center;
+      text-shadow: 3px 3px 0 #00000040;
+      margin-bottom: 1.8rem;
+    }
+
+    .facts-content {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
+      font-size: 1.25rem;
+    }
+
+    .fact-block {
+      flex: 1 1 280px;
+      background: #ffffff18;
+      backdrop-filter: blur(12px);
+      border-radius: 2.2rem;
+      padding: 1.5rem;
+      border: 2px solid #f9e076;
+      background: #203e5490;
+    }
+
+    .fact-block h3 {
+      font-family: 'Fredoka One', cursive;
+      color: #feda4a;
+      font-size: 1.8rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .footer-note {
+      text-align: center;
+      margin-top: 2rem;
+      font-weight: 700;
+      font-size: 1.3rem;
+      color: #1a3b4b;
+    }
+
+    @media (max-width: 650px) {
+      .container {
+        padding: 1.5rem 1rem;
+      }
+      h1 {
+        font-size: 2.5rem;
+      }
+      .subtitle {
+        font-size: 1.2rem;
+        white-space: normal;
+        padding: 0.5rem 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🍌 Миньоны и все все все 🍌</h1>
+    <div class="subtitle">БАНАНА-ЭНЦИКЛОПЕДИЯ</div>
+
+    <!-- Сетка с известными миньонами -->
+    <div class="minions-grid">
+      
+      <!-- Карточка Кевина -->
+      <div class="minion-card">
+        <div class="minion-avatar"><span>👓🧢</span></div>
+        <div class="minion-name">Кевин</div>
+        <div class="minion-info">
+          <span class="traits">📋 Характер:</span> Лидер, ответственный, саркастичный.<br>
+          <span class="funny-stuff">🤣 Фишки:</span> Обожает гольф и крикет. Часто закатывает глаза на глупости Боба и Стюарта. Именно он придумал план найти нового хозяина.
+        </div>
+        <div style="margin-top: 0.4rem; font-size: 0.9rem; color: #254f6b;">⭐ «Миньон, который принимает решения»</div>
+      </div>
+
+      <!-- Карточка Стюарта -->
+      <div class="minion-card">
+        <div class="minion-avatar"><span>🎸😎</span></div>
+        <div class="minion-name">Стюарт</div>
+        <div class="minion-info">
+          <span class="traits">🎯 Характер:</span> Бунтарь, музыкант, слегка ленивый.<br>
+          <span class="funny-stuff">🎸 Фишки:</span> Играет на укулеле (часто фальшивит). Одно зрение, как у пирата. Мечтает стать рок-звездой, но обычно засыпает на репетициях.
+        </div>
+      </div>
+
+      <!-- Карточка Боба -->
+      <div class="minion-card">
+        <div class="minion-avatar"><span>🧸🐻</span></div>
+        <div class="minion-name">Боб</div>
+        <div class="minion-info">
+          <span class="traits">🍼 Характер:</span> Маленький, наивный, невероятно милый.<br>
+          <span class="funny-stuff">🧸 Фишки:</span> Разноцветные глаза (зелёный и карий). Таскает с собой плюшевого мишку Тимми. Обожает бананы и часто становится причиной хаоса по случайности.
+        </div>
+      </div>
+
+      <!-- Карточка Карла -->
+      <div class="minion-card">
+        <div class="minion-avatar"><span>📢🔥</span></div>
+        <div class="minion-name">Карл</div>
+        <div class="minion-info">
+          <span class="traits">📣 Характер:</span> Громкий, энергичный, слегка сумасшедший.<br>
+          <span class="funny-stuff">📢 Фишки:</span> Обожает мегафон и пожарную сирену. Постоянно кричит «БИ-ДО!». Носит комбинезон с подтяжками и любит всё взрывать.
+        </div>
+      </div>
+
+      <!-- Карточка Дэйв -->
+      <div class="minion-card">
+        <div class="minion-avatar"><span>🚀🤪</span></div>
+        <div class="minion-name">Дэйв</div>
+        <div class="minion-info">
+          <span class="traits">🎨 Характер:</span> Креативный, неуклюжий, игривый.<br>
+          <span class="funny-stuff">🎯 Фишки:</span> Мастер запускать ракеты из всего подряд. Любит рисовать пальцами и часто проливает смузи. Носит два глаза, но видит мир по-своему.
+        </div>
+      </div>
+
+      <!-- Карточка Джерри -->
+      <div class="minion-card">
+        <div class="minion-avatar"><span>🧹🍌</span></div>
+        <div class="minion-name">Джерри</div>
+        <div class="minion-info">
+          <span class="traits">🧽 Характер:</span> Трудолюбивый, преданный, немного пугливый.<br>
+          <span class="funny-stuff">🧹 Фишки:</span> Вечно убирает за остальными. Любит пылесосить и собирать банановую кожуру. Паникует, если что-то идёт не по плану.
+        </div>
+      </div>
+
+      <!-- Карточка Тим (не путать с мишкой Боба) -->
+      <div class="minion-card">
+        <div class="minion-avatar"><span>🤖💡</span></div>
+        <div class="minion-name">Тим</div>
+        <div class="minion-info">
+          <span class="traits">🔧 Характер:</span> Изобретатель, очкарик, слегка неуклюжий.<br>
+          <span class="funny-stuff">🔩 Фишки:</span> Вечно чинит гаджеты Грю. Носит большие очки и обожает инструкции. Часто путает кнопки, но всё равно чинит.
+        </div>
+      </div>
+
+      <!-- Карточка Фил -->
+      <div class="minion-card">
+        <div class="minion-avatar"><span>👶🍼</span></div>
+        <div class="minion-name">Фил</div>
+        <div class="minion-info">
+          <span class="traits">🍭 Характер:</span> Добрый, похож на младенца, любит обниматься.<br>
+          <span class="funny-stuff">🧷 Фишки:</span> Носит подгузник поверх комбинезона. Обожает пускать пузыри и играть с резиновыми уточками. Самый пухлый миньон.
+        </div>
+      </div>
+
+      <!-- Карточка Лэнс -->
+      <div class="minion-card">
+        <div class="minion-avatar"><span>🌴😎</span></div>
+        <div class="minion-name">Лэнс</div>
+        <div class="minion-info">
+          <span class="traits">🏖️ Характер:</span> Расслабленный, пляжный, беззаботный.<br>
+          <span class="funny-stuff">🍹 Фишки:</span> Всегда в гавайской рубашке и с кокосом. Танцует ламбаду при любой возможности. Носит солнцезащитные очки даже в лаборатории.
+        </div>
+      </div>
+    </div>
+
+    <!-- Блок с общими фактами -->
+    <div class="facts-section">
+      <h2>🍌 Как появились миньоны? И почему служат Грю?</h2>
+      <div class="facts-content">
+        <div class="fact-block">
+          <h3>🦠 Зарождение</h3>
+          <p>Миньоны существуют с начала времён. Они эволюционировали из крошечных одноклеточных организмов в жёлтых существ с единственной целью — служить самому подлому хозяину. Они служили динозаврам, фараонам и даже Дракуле, но часто случайно уничтожали своих повелителей.</p>
+        </div>
+        <div class="fact-block">
+          <h3>🏝️ Поиск хозяина</h3>
+          <p>После череды неудач миньоны спрятались в пещере и впали в депрессию без лидера. Тогда Кевин, Стюарт и Боб отправились в Нью-Йорк (1968 год), чтобы найти нового злодея. Там они встретили Скарлет Оверкилл, но в итоге судьба привела их к юному Грю.</p>
+        </div>
+        <div class="fact-block">
+          <h3>💜 Почему именно Грю?</h3>
+          <p>Грю — идеальный босс: он умён, амбициозен и, главное, ценит миньонов как семью. Миньоны увидели в нём не просто злодея, а того, кто примет их безумства. Они помогают ему в лаборатории, операциях и воспитании девочек, потому что Грю даёт им бананы, заботу и смысл жизни.</p>
+        </div>
+      </div>
+      <div style="margin-top: 2rem; text-align: center; font-weight: bold; font-size: 1.3rem; color: #ffe484;">
+        🍌 Банановый факт: язык миньонов — смесь испанского, итальянского, английского и просто тарабарщины! «Ба-на-на!» 🍌
+      </div>
+    </div>
+
+    <div class="footer-note">
+      ✨ Миньоны — маленькие жёлтые помощники с большим сердцем! ✨
+    </div>
+  </div>
+</body>
+</html>
